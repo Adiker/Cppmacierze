@@ -1,0 +1,92 @@
+ Sure, I can help you convert the provided C++ code into a Windows Forms C# application. Here's a basic conversion:
+
+```csharp
+using System;
+using System.Windows.Forms;
+
+namespace MatrixMultiplier
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void multiplyButton_Click(object sender, EventArgs e)
+        {
+            int rows1, rows2, columns1, columns2;
+            int[,] tab1, tab2, tab3;
+
+            if (!int.TryParse(rows1TextBox.Text, out rows1) ||
+                !int.TryParse(columns1TextBox.Text, out columns1) ||
+                !int.TryParse(rows2TextBox.Text, out rows2) ||
+                !int.TryParse(columns2TextBox.Text, out columns2))
+            {
+                MessageBox.Show("Invalid input. Please enter valid integer values for matrix dimensions.");
+                return;
+            }
+
+            // Check matrix multiplication conditions
+            if (columns1 != rows2)
+            {
+                MessageBox.Show("Number of columns in matrix 1 must be equal to the number of rows in matrix 2.");
+                return;
+            }
+
+            tab1 = new int[rows1, columns1];
+            tab2 = new int[rows2, columns2];
+            tab3 = new int[rows1, columns2];
+
+            // Fill matrix 1
+            for (int i = 0; i < rows1; i++)
+            {
+                for (int j = 0; j < columns1; j++)
+                {
+                    string prompt = $"Enter value for Matrix 1 at row {i + 1}, column {j + 1}:";
+                    if (!int.TryParse(Microsoft.VisualBasic.Interaction.InputBox(prompt, "Matrix 1 Input"), out tab1[i, j]))
+                    {
+                        MessageBox.Show("Invalid input. Please enter valid integer values.");
+                        return;
+                    }
+                }
+            }
+
+            // Fill matrix 2
+            for (int i = 0; i < rows2; i++)
+            {
+                for (int j = 0; j < columns2; j++)
+                {
+                    string prompt = $"Enter value for Matrix 2 at row {i + 1}, column {j + 1}:";
+                    if (!int.TryParse(Microsoft.VisualBasic.Interaction.InputBox(prompt, "Matrix 2 Input"), out tab2[i, j]))
+                    {
+                        MessageBox.Show("Invalid input. Please enter valid integer values.");
+                        return;
+                    }
+                }
+            }
+
+            // Perform matrix multiplication
+            for (int i = 0; i < rows1; i++)
+            {
+                for (int j = 0; j < columns2; j++)
+                {
+                    tab3[i, j] = 0;
+                    for (int k = 0; k < columns1; k++)
+                    {
+                        tab3[i, j] += tab1[i, k] * tab2[k, j];
+                    }
+                }
+            }
+
+            // Display the result in a new form
+            MatrixResultForm resultForm = new MatrixResultForm(tab3);
+            resultForm.ShowDialog();
+        }
+    }
+}
+```
+
+In this example, we create a Windows Forms application with a form (`Form1`) and a button (`multiplyButton`). The `multiplyButton_Click` event handler performs matrix multiplication using the input provided by the user and displays the result in a new form (`MatrixResultForm`).
+
+Please note that you'll need to create the `MatrixResultForm` and design the user interface (e.g., textboxes for input, labels, buttons) in the Visual Studio environment to make the application complete.
