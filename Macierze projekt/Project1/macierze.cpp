@@ -81,8 +81,8 @@ int main() {
         tab3[i] = new int[columns2];
         for (int j = 0; j < columns2; j++)
         {
-            tab3[i][j] = tab1[r1][c1] * tab2[r2][c2];
-            for (int temp = 1; temp < columns1; temp++)
+            tab3[i][j] = 0;
+            for (int temp = 0; temp < columns1; temp++)
             {   
                 tab3[i][j] += tab1[r1][c1 + temp] * tab2[r2 + temp][c2];
             }
