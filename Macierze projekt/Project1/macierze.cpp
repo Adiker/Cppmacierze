@@ -106,5 +106,6 @@ int main() {
             cout << tab3[i][j] << "\t";
         }
     }
+    cout << "\n" << endl;
     return 0;
 }
