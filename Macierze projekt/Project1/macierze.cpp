@@ -104,7 +104,7 @@ int main() {
             for (int temp = 0; temp < columns1; temp++) {   
                 tab3[i][j] += tab1[i][c1 + temp] * tab2[r2 + temp][j];
             }
-            cout << tab3[i][j] << "\t";;
+            cout << tab3[i][j] << "\t";
         }
     }
     return 0;
