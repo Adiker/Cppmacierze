@@ -102,14 +102,9 @@ int main() {
         for (int j = 0; j < columns2; j++) {
             tab3[i][j] = 0;
             for (int temp = 0; temp < columns1; temp++) {   
-                tab3[i][j] += tab1[i][c1 + temp] * tab2[r2 + temp][c2];
+                tab3[i][j] += tab1[i][c1 + temp] * tab2[r2 + temp][j];
             }
-            cout << tab3[i][j] << "\t";
-            c2++;
-            if (c2 == columns2) {
-                c2 = 0;
-                r1++;
-            }
+            cout << tab3[i][j] << "\t";;
         }
     }
     return 0;
