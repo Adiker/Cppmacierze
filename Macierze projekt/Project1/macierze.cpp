@@ -94,15 +94,14 @@ int main() {
     cout << "\n\nWykonywanie operacji mnożenia macierzy...\nMacierz wynikowa to: " << endl;
 
     double** tab3 = new double*[rows1];
-    int c1 = 0, c2 = 0, r1 = 0, r2 = 0;
 
     for (int i = 0; i < rows1; i++) {
         cout << "\n" << endl;
         tab3[i] = new double[columns2];
         for (int j = 0; j < columns2; j++) {
             tab3[i][j] = 0;
-            for (int temp = 0; temp < columns1; temp++) {   
-                tab3[i][j] += tab1[i][c1 + temp] * tab2[r2 + temp][j];
+            for (int k = 0; k < columns1; k++) {   
+                tab3[i][j] += tab1[i][k] * tab2[k][j];
             }
             cout << tab3[i][j] << "\t";
         }
